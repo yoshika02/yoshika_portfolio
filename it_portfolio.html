@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoshika Verma - Data Science Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-attachment: fixed;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, rgba(15, 12, 41, 0.95) 0%, rgba(48, 43, 99, 0.95) 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(74, 144, 226, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            margin: 0 10px;
+            border: 2px solid #4a90e2;
+            background: transparent;
+            color: #4a90e2;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .nav {
+            background: rgba(15, 12, 41, 0.9);
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(74, 144, 226, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #4a90e2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 3px solid #333;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: rgba(15, 12, 41, 0.7);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-card h3 {
+            color: #4a90e2;
+            margin-bottom: 15px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #2c2c2c;
+            color: #888;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #333;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: rgba(15, 12, 41, 0.7);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            border-bottom: 1px solid #333;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .project-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+            color: #888;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #4a90e2;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 40px;
+            background: rgba(15, 12, 41, 0.7);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -41px;
+            top: 25px;
+            width: 16px;
+            height: 16px;
+            background: #4a90e2;
+            border-radius: 50%;
+            border: 3px solid #0f0c29;
+            box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+        }
+
+        .experience-item h3 {
+            color: #4a90e2;
+            margin-bottom: 5px;
+        }
+
+        .experience-item .date {
+            color: #666;
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .experience-item ul {
+            margin-left: 20px;
+            margin-top: 10px;
+            color: #888;
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .leadership-card {
+            background: rgba(15, 12, 41, 0.7);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .leadership-card h3 {
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+
+        .leadership-card p {
+            color: #888;
+        }
+
+        .contact {
+            background: rgba(15, 12, 41, 0.9);
+            border-top: 1px solid rgba(74, 144, 226, 0.3);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #4a90e2;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #6aa8f0;
+        }
+
+        .footer {
+            background: rgba(15, 12, 41, 0.95);
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(74, 144, 226, 0.3);
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .experience-timeline {
+                padding-left: 30px;
+            }
+            .experience-timeline::before {
+                left: 10px;
+            }
+            .experience-item::before {
+                left: -31px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Yoshika Verma</h1>
+        <p>Data Science & ML Engineer | Biotechnology Graduate | Research Enthusiast</p>
+        <div>
+            <a href="#contact" class="btn">Get In Touch</a>
+            <a href="#projects" class="btn">View Projects</a>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#leadership">Leadership</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Crect fill='%23242424' width='250' height='250'/%3E%3Ctext x='50%25' y='50%25' font-size='70' fill='%234a90e2' text-anchor='middle' dy='.3em'%3EYV%3C/text%3E%3C/svg%3E" alt="Yoshika Verma" class="profile-img">
+            <div class="about-text">
+                <p>Hello! I'm Yoshika Verma, a Biotechnology undergraduate at Dr BR Ambedkar National Institute of Technology Jalandhar, with a strong passion for Data Science and Machine Learning. I bridge the gap between biological sciences and computational intelligence to solve real-world healthcare and business challenges.</p>
+                <p>With hands-on experience from internships at IIT Jammu and Indian Statistical Institute Kolkata, I've worked on diverse ML projects ranging from traditional algorithms to deep learning applications in healthcare and biomedical research. My focus is on applying data science to biological problems, particularly in disease detection and predictive analytics.</p>
+                <p>I'm driven by curiosity, love solving complex problems, and believe in continuous learning. When I'm not analyzing data or training models, you'll find me leading student clubs or exploring the latest trends in AI and healthcare technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="container">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <h3>Data Science Intern</h3>
+                <span class="date">Indian Statistical Institute Kolkata | June 2025 – July 2025</span>
+                <p>Worked on healthcare-focused ML solutions, combining image and tabular data for Parkinson's Disease detection in a research-driven environment.</p>
+                <ul>
+                    <li>Preprocessed spiral and meander images with tabular data, applying feature engineering for Parkinson's Disease classification</li>
+                    <li>Implemented advanced models: Logistic Regression, Random Forest, XGBoost, LSTM, 1D CNN, and CNN + LSTM architectures</li>
+                    <li>Evaluated performance using comprehensive metrics: accuracy, precision, recall, F1-score, AUC, and confusion matrix analysis</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Data Science Intern</h3>
+                <span class="date">Indian Institute of Technology Jammu | May 2024 – July 2024</span>
+                <p>Applied ML algorithms to diverse datasets, built robust pipelines, and performed in-depth analysis to solve real-world data science problems.</p>
+                <ul>
+                    <li>Mastered ML algorithms including regression, SVM, K-means, and hierarchical clustering</li>
+                    <li>Performed comprehensive data preprocessing: cleaning, feature scaling, and outlier handling</li>
+                    <li>Conducted exploratory data analysis with statistical insights, data visualization, and correlation analysis</li>
+                    <li>Engineered features for improved model accuracy and implemented cross-validation techniques</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Bachelor of Technology in Information Technology</h3>
+                <span class="date">Dr BR Ambedkar NIT Jalandhar | 2022 – 2026</span>
+                <p>Pursuing B.Tech in Information Technology with a focus on data science, machine learning, artificial intelligence, and software development.</p>
+            </div>
+
+            <div class="experience-item">
+                <h3>Academic Excellence</h3>
+                <span class="date">Pre-University Education</span>
+                <p><strong>12th Grade:</strong> 93.06% - Apollo Public School, Patiala</p>
+                <p><strong>10th Grade:</strong> 96.87% - Sahibzada Ajit Singh Academy, Rupnagar</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">📊</div>
+                <div class="project-content">
+                    <h3>COVID-19 Portfolio Project</h3>
+                    <p>Comprehensive data analysis of global COVID-19 trends using advanced SQL queries and visualization tools.</p>
+                    <ul>
+                        <li>Analyzed global COVID-19 data using JOINs, window functions, and subqueries</li>
+                        <li>Extracted key metrics on cases, deaths, and vaccination rates</li>
+                    </ul>
+                    <div class="skill-tags">
+                        <span class="tag">SQL</span>
+                        <span class="tag">Tableau</span>
+                        <span class="tag">Power BI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">🛒</div>
+                <div class="project-content">
+                    <h3>Blinkit Dashboard</h3>
+                    <p>Interactive Power BI dashboard visualizing sales, revenue, and customer insights for business intelligence.</p>
+                    <ul>
+                        <li>Created comprehensive business performance overview with KPIs</li>
+                        <li>Designed easy-to-read charts for decision-making support</li>
+                    </ul>
+                    <div class="skill-tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Data Visualization</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">🧠</div>
+                <div class="project-content">
+                    <h3>Parkinson's Disease Detection</h3>
+                    <p>Multi-modal ML solution combining image and tabular data for early Parkinson's Disease detection.</p>
+                    <ul>
+                        <li>Integrated CNN and LSTM architectures for image analysis</li>
+                        <li>Applied ensemble methods with XGBoost and Random Forest</li>
+                    </ul>
+                    <div class="skill-tags">
+                        <span class="tag">Deep Learning</span>
+                        <span class="tag">CNN</span>
+                        <span class="tag">LSTM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Programming Languages</h3>
+                <div class="skill-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">C</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>Machine Learning & Deep Learning</h3>
+                <div class="skill-tags">
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">scikit-learn</span>
+                    <span class="tag">XGBoost</span>
+                    <span class="tag">Random Forest</span>
+                    <span class="tag">CNN</span>
+                    <span class="tag">LSTM</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>Data Analysis & Visualization</h3>
+                <div class="skill-tags">
+                    <span class="tag">Pandas</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">Matplotlib</span>
+                    <span class="tag">Seaborn</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Tableau</span>
+                    <span class="tag">Excel</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>Big Data & Tools</h3>
+                <div class="skill-tags">
+                    <span class="tag">Hadoop</span>
+                    <span class="tag">PySpark</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>Management & Soft Skills</h3>
+                <div class="skill-tags">
+                    <span class="tag">Leadership</span>
+                    <span class="tag">Time Management</span>
+                    <span class="tag">Problem Solving</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="leadership" class="container">
+        <h2 class="section-title">Leadership & Positions</h2>
+        <div class="leadership-grid">
+            <div class="leadership-card">
+                <h3>Core Member</h3>
+                <p><strong>Student Alumni Relation Club</strong></p>
+                <p>Building bridges between current students and alumni, organizing networking events and mentorship programs.</p>
+            </div>
+
+            <div class="leadership-card">
+                <h3>PR Head</h3>
+                <p><strong>Kalakaar Club</strong></p>
+                <p>Leading public relations efforts, managing communications, and promoting cultural events across campus.</p>
+            </div>
+
+            <div class="leadership-card">
+                <h3>Honorary Member</h3>
+                <p><strong>Nakshatra'24</strong></p>
+                <p>Contributing to the organization and success of the annual technical and cultural fest.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact container">
+        <h2 class="section-title">Let's Connect</h2>
+        <p style="text-align: center; font-size: 1.1em; margin-bottom: 20px; color: #888;">I'm always open to discussing new projects, research opportunities, or collaborations in Data Science and AI.</p>
+        <div class="contact-links">
+            <a href="mailto:yoshikaverma815@gmail.com" class="contact-link">
+                <span>📧</span> yoshikaverma815@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/yoshika-verma-81a539206" class="contact-link" target="_blank">
+                <span>💼</span> LinkedIn
+            </a>
+            <a href="https://github.com/yoshika02" class="contact-link" target="_blank">
+                <span>💻</span> GitHub
+            </a>
+            <a href="tel:+919780910223" class="contact-link">
+                <span>📱</span> +91 9780910223
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Yoshika Verma. Bridging Technology and Data Science.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
